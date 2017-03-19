@@ -102,6 +102,16 @@ function nFactorial(n) {
 }
 
 function cacheFunction(cb) {
+	var store = {};
+	return function (argument) {
+		if(store.hasOwnProperty(argument)){
+			return store[argument];
+		} else {
+			store[argument] = cb(argument);
+			return store[argument];
+		}
+	};
+
 	//Extra Credit
 	//use closure to create a cache for the cb function
 	//the function that you return should accept a single argument and invoke cb with that argument
